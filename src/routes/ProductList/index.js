@@ -1,0 +1,24 @@
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
+import products from '../../constants/products';
+import ROUTES from '../../constants/routes';
+
+const getDetailPath = (slug) => ROUTES.PRODUCT_DETAIL.replace(':slug', slug);
+
+const ProductList = () => {
+  return (
+    <Fragment>
+      <h1>
+        Product List Page
+      </h1>
+      {products.map(product => (
+        <div key={product.id}>
+          <Link to={getDetailPath(product.slug)}>Go to {product.slug}</Link>
+        </div>
+      ))}
+    </Fragment>
+  );
+};
+
+export default ProductList;

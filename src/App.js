@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import ROUTES from './constants/routes';
+
+/* LIST OF ROUTE COMPONENTS */
+import Home from './routes/Home';
+import ProductDetail from './routes/ProductDetail';
+import ProductList from './routes/ProductList';
+
+const App = () => (
+  <Router>
+    <Switch>
+      <Route path={ROUTES.PRODUCT_DETAIL} component={ProductDetail} />
+      <Route path={ROUTES.PRODUCT_LIST} component={ProductList} />
+      <Route path={ROUTES.HOME} component={Home} />
+    </Switch>
+  </Router>
+);
 
 export default App;
