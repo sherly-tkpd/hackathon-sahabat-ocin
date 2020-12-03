@@ -1,33 +1,25 @@
-import * as THREE from 'three';
+import DemoUtils from './DemoUtils';
+import Reticle from './Reticle';
 
-/*
- * Copyright 2017 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the 'License');
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an 'AS IS' BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-const MODEL_OBJ_URL = '../assets/test3/Samsung_QLED_55__Studio_Stand_mat(1).obj';
-const MODEL_MTL_URL = '../assets/test3/Samsung_QLED_55__Studio_Stand_mat(1).mtl';
-const MODEL_SCALE = 0.005;
+let MODEL_OBJ_URL;
+let MODEL_MTL_URL;
+let MODEL_SCALE;
+let custom;
 
 /**
  * Container class to manage connecting to the WebXR Device API
  * and handle rendering on every frame.
  */
-class App {
-  constructor() {
+class WebXR {
+  constructor(args) {
     this.onXRFrame = this.onXRFrame.bind(this);
     this.onEnterAR = this.onEnterAR.bind(this);
     this.onClick = this.onClick.bind(this);
+
+    MODEL_OBJ_URL = args[0];
+    MODEL_MTL_URL = args[1];
+    MODEL_SCALE = args[2];
+    custom = args[3];
 
     this.init();
   }
@@ -54,14 +46,12 @@ class App {
       // If `navigator.xr` or `XRSession.prototype.requestHitTest`
       // does not exist, we must display a message indicating there
       // are no valid devices.
-      this.onNoXRDevice();
-      return;
     }
 
     // We found an XRDevice! Bind a click listener on our "Enter AR" button
     // since the spec requires calling `device.requestSession()` within a
     // user gesture.
-    document.querySelector('#enter-ar').addEventListener('click', this.onEnterAR);
+    this.onEnterAR();
   }
 
   /**
@@ -92,16 +82,7 @@ class App {
     } catch (e) {
       // If `requestSession` fails, the canvas is not added, and we
       // call our function for unsupported browsers.
-      this.onNoXRDevice();
     }
-  }
-
-  /**
-   * Toggle on a class on the page to disable the "Enter AR"
-   * button and display the unsupported browser message.
-   */
-  onNoXRDevice() {
-    document.body.classList.add('unsupported');
   }
 
   /**
@@ -117,7 +98,7 @@ class App {
 
     // To help with working with 3D on the web, we'll use three.js. Set up
     // the WebGLRenderer, which handles rendering to our session's base layer.
-    this.renderer = new THREE.WebGLRenderer({
+    this.renderer = new window.THREE.WebGLRenderer({
       alpha: true,
       preserveDrawingBuffer: true,
     });
@@ -133,28 +114,34 @@ class App {
     // using our new renderer's context
     this.session.baseLayer = new window.XRWebGLLayer(this.session, this.gl);
 
-    this.scene = window.createLitScene();
+    // A THREE.Scene contains the scene graph for all objects in the
+    // render scene. Call our utility which gives us a THREE.Scene
+    // with a few lights and meshes already in the scene.
+    this.scene = DemoUtils.createLitScene();
 
-    // We no longer need our cube model.
-    // Sorry, cube!
-    /*
-    const geometry = new THREE.BoxBufferGeometry(0.5, 0.5, 0.5);
-    const material = new THREE.MeshBasicMaterial();
-    geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0.25, 0));
-    this.model = new THREE.Mesh(geometry, material);
-    */
-    window.loadModel(MODEL_OBJ_URL, MODEL_MTL_URL).then(model => {
+    // Use the DemoUtils.loadModel to load our OBJ and MTL. The promise
+    // resolves to a THREE.Group containing our mesh information.
+    // Dont await this promise, as we want to start the rendering
+    // process before this finishes.
+    DemoUtils.loadModel(MODEL_OBJ_URL, MODEL_MTL_URL).then(model => {
       this.model = model;
+
+      // Every model is different -- you may have to adjust the scale
+      // of a model depending on the use.
       this.model.scale.set(MODEL_SCALE, MODEL_SCALE, MODEL_SCALE);
     });
+
 
     // We'll update the camera matrices directly from API, so
     // disable matrix auto updates so three.js doesn't attempt
     // to handle the matrices independently.
-    this.camera = new THREE.PerspectiveCamera();
+    this.camera = new window.THREE.PerspectiveCamera();
     this.camera.matrixAutoUpdate = false;
 
-    this.reticle = new window.Reticle(this.session, this.camera);
+    // Add a Reticle object, which will help us find surfaces by drawing
+    // a ring shape onto found surfaces. See source code
+    // of Reticle in shared/utils.js for more details.
+    this.reticle = new Reticle(this.session, this.camera);
     this.scene.add(this.reticle);
 
     this.frameOfRef = await this.session.requestFrameOfReference('eye-level');
@@ -171,7 +158,11 @@ class App {
     let session = frame.session;
     let pose = frame.getDevicePose(this.frameOfRef);
 
+    // Update the reticle's position
     this.reticle.update(this.frameOfRef);
+
+    // If the reticle has found a hit (is visible) and we have
+    // not yet marked our app as stabilized, do so
     if (this.reticle.visible && !this.stabilized) {
       this.stabilized = true;
       document.body.classList.add('stabilized');
@@ -194,7 +185,7 @@ class App {
         // Set the view matrix and projection matrix from XRDevicePose
         // and XRView onto our THREE.Camera.
         this.camera.projectionMatrix.fromArray(view.projectionMatrix);
-        const viewMatrix = new THREE.Matrix4().fromArray(pose.getViewMatrix(view));
+        const viewMatrix = new window.THREE.Matrix4().fromArray(pose.getViewMatrix(view));
         this.camera.matrix.getInverse(viewMatrix);
         this.camera.updateMatrixWorld(true);
 
@@ -204,35 +195,70 @@ class App {
     }
   }
 
+  /**
+   * This method is called when tapping on the page once an XRSession
+   * has started. We're going to be firing a ray from the center of
+   * the screen, and if a hit is found, use it to place our object
+   * at the point of collision.
+   */
   async onClick(e) {
+    // If our model is not yet loaded, abort
     if (!this.model) {
       return;
     }
 
+    // We're going to be firing a ray from the center of the screen.
+    // The requestHitTest function takes an x and y coordinate in
+    // Normalized Device Coordinates, where the upper left is (-1, 1)
+    // and the bottom right is (1, -1). This makes (0, 0) our center.
     const x = 0;
     const y = 0;
-   
-    this.raycaster = this.raycaster || new THREE.Raycaster();
+
+    // Create a THREE.Raycaster if one doesn't already exist,
+    // and use it to generate an origin and direction from
+    // our camera (device) using the tap coordinates.
+    // Learn more about THREE.Raycaster:
+    // https://threejs.org/docs/#api/core/Raycaster
+    this.raycaster = this.raycaster || new window.THREE.Raycaster();
     this.raycaster.setFromCamera({ x, y }, this.camera);
     const ray = this.raycaster.ray;
-    
+
+    // Fire the hit test to see if our ray collides with a real
+    // surface. Note that we must turn our THREE.Vector3 origin and
+    // direction into an array of x, y, and z values. The proposal
+    // for `XRSession.prototype.requestHitTest` can be found here:
+    // https://github.com/immersive-web/hit-test
     const origin = new Float32Array(ray.origin.toArray());
     const direction = new Float32Array(ray.direction.toArray());
     const hits = await this.session.requestHitTest(origin,
                                                    direction,
                                                    this.frameOfRef);
 
+    // If we found at least one hit...
     if (hits.length) {
+      // We can have multiple collisions per hit test. Let's just take the
+      // first hit, the nearest, for now.
       const hit = hits[0];
-      const hitMatrix = new THREE.Matrix4().fromArray(hit.hitMatrix);
 
+      // Our XRHitResult object has one property, `hitMatrix`, a
+      // Float32Array(16) representing a 4x4 Matrix encoding position where
+      // the ray hit an object, and the orientation has a Y-axis that corresponds
+      // with the normal of the object at that location.
+      // Turn this matrix into a THREE.Matrix4().
+      const hitMatrix = new window.THREE.Matrix4().fromArray(hit.hitMatrix);
+
+      // Now apply the position from the hitMatrix onto our model.
       this.model.position.setFromMatrixPosition(hitMatrix);
 
-      window.lookAtOnY(this.model, this.camera);
+      // Rather than using the rotation encoded by the `modelMatrix`,
+      // rotate the model to face the camera. Use this utility to
+      // rotate the model only on the Y axis.
+      DemoUtils.lookAtOnY(this.model, this.camera, custom);
 
+      // Ensure our model has been added to the scene.
       this.scene.add(this.model);
     }
   }
 };
 
-export default App;
+export default WebXR;

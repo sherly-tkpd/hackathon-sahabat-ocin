@@ -12,8 +12,8 @@ newmtl Samsung_QLED_55__Studio_Stand_mat1_mtl_1
 	Kd 0.1922 0.1922 0.1922
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka textures\\dcmap_Samsung_QLED TV with Studio Stand_diff.jpg
-	map_Kd textures\\dcmap_Samsung_QLED TV with Studio Stand_diff.jpg
+	map_Ka textures\\dcmap_Samsung_QLED TV with Studio Stand_diff(1).jpg
+	map_Kd textures\\dcmap_Samsung_QLED TV with Studio Stand_diff(1).jpg
 	map_bump textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
 	bump textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
 
@@ -28,8 +28,8 @@ newmtl Samsung_QLED_55__Studio_Stand_mat1_mtl_2
 	Kd 0.1922 0.0196 0.0196
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka textures\\dcmap_Samsung_QLED TV with Studio Stand_diff.jpg
-	map_Kd textures\\dcmap_Samsung_QLED TV with Studio Stand_diff.jpg
+	map_Ka textures\\dcmap_Samsung_QLED TV with Studio Stand_diff(1).jpg
+	map_Kd textures\\dcmap_Samsung_QLED TV with Studio Stand_diff(1).jpg
 	map_bump textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
 	bump textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
 
@@ -44,8 +44,8 @@ newmtl Samsung_QLED_55__Studio_Stand_mat1_mtl_3
 	Kd 0.4353 0.4353 0.4353
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka textures\\dcmap_Samsung_QLED TV with Studio Stand_diff.jpg
-	map_Kd textures\\dcmap_Samsung_QLED TV with Studio Stand_diff.jpg
+	map_Ka textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
+	map_Kd textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
 	map_bump textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
 	bump textures\\dcmap_Samsung_QLED TV with Studio Stand_bump.jpg
 
