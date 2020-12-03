@@ -3,14 +3,14 @@ const products = [
     id: 1,
     slug: 'vas',
     title:'Vas Tanaman Medium',
-    description: 'Vas tanah liat dengan tanaman hijau asli yang dapat menyejukkan suasana rumah. Ukuran 40x40x100 cm. Dikirim dengan menggunakkan karbo dan media tanam kering.',
+    description: 'Vas tanah liat dengan tanaman hijau asli yang dapat menyejukkan suasana rumah. Ukuran 40x40x100 cm. Dikirim dengan menggunakkan kargo dan media tanam kering.',
     price:350000,
     objectModel: true,
     faceModel: false,
     facePart: '',
     shades: [],
     objectURL: '',
-    images: ['images/products/1/asset_1.png', 'images/products/1/asset_2.png', 'images/products/1/asset_3.png'],
+    images: ['/images/products/1/asset_1.png', '/images/products/1/asset_2.png', '/images/products/1/asset_3.png'],
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ const products = [
         rgba:'50,0,50,0.3'
     }],
     objectURL: '',
-    images: ['images/products/3/asset_1_persia.jpg','images/products/3/asset_2_navy.jpg','images/products/3/asset_3_blush.jpg','images/products/3/asset_4_bronze.jpg'],
+    images: ['/images/products/3/asset_1_persia.jpg','/images/products/3/asset_2_navy.jpg','/images/products/3/asset_3_blush.jpg','/images/products/3/asset_4_bronze.jpg'],
   },
   {
     id: 4,
@@ -70,7 +70,7 @@ const products = [
         rgba:''
       }],
     objectURL: '',
-    images: ['images/products/4/asset_1.jpg','images/products/4/asset_2.jpg','images/products/4/asset_3.jpg'],
+    images: ['/images/products/4/asset_1.jpg','/images/products/4/asset_2.jpg','/images/products/4/asset_3.jpg'],
   },
   {
     id: 5,
@@ -89,7 +89,7 @@ const products = [
         rgba:''
       }],
     objectURL: '',
-    images: ['images/products/5/asset_1.jpeg','images/products/5/asset_2.jpeg',],
+    images: ['/images/products/5/asset_1.jpeg','/images/products/5/asset_2.jpeg'],
   },
 ];
 
