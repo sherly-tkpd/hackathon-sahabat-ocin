@@ -9,6 +9,7 @@ import products from "../../constants/products";
 import Modal from "react-modal";
 import Viewer3D from "../../components/Viewer3D";
 import WebXR from './components/WebXR';
+import VirtualMakeUp from '../../components/VirtualMakeUp';
 
 const customStyles = {
   content: {
@@ -30,6 +31,7 @@ const imgThumbnailStyle = {
 const ProductList = () => {
   const { slug = "" } = useParams();
   const [showModal, setShowModal] = useState(false);
+  const [showMakeup, setShowMakeup] = useState(false);
   const product = products.filter((product) => product.slug === slug)[0] || {};
 
   // TODO: Fandok -- popup 360 view
@@ -48,9 +50,9 @@ const ProductList = () => {
         <h2 class="title__5">Choose Colour</h2>
         <ul class="pro__choose__color">
           {product.shades.map((shade) => (
-            <li class="red">
+            <li>
               <a href="#">
-                <i class="zmdi zmdi-circle"></i>
+                <i style={{color: shade.trueTone}} class="zmdi zmdi-circle"></i>
               </a>
             </li>
           ))}
@@ -87,7 +89,9 @@ const ProductList = () => {
     </div> )
 
   // TODO: Andy -- popup for try on face functionality
-  const handleTryMakeUp = () => {};
+  const handleTryMakeUp = () => {
+    setShowMakeup(true)
+  };
 
   // TODO: Ocin -- popup for place object in room functionality
   const handlePlaceInRoom = () => {
@@ -146,8 +150,8 @@ const ProductList = () => {
                             </div>
                             <ul class="pro__dtl__btn">
                                 {product.faceModel ? 
-                                  <li class="buy__now__btn" onClick={handleTryMakeUp()}><a href="#">TRY ON</a></li> : 
-                                  <li class="buy__now__btn" onClick={handlePlaceInRoom()}><a href="#">PLACE IN ROOM</a></li>
+                                  <li class="buy__now__btn" onClick={handleTryMakeUp}><a href="#">TRY ON</a></li> : 
+                                  <li class="buy__now__btn" onClick={handlePlaceInRoom}><a href="#">PLACE IN ROOM</a></li>
                                 }
                                 <li><a href="#"><span class="ti-heart"></span></a></li>
                             </ul>
@@ -180,6 +184,14 @@ const ProductList = () => {
       )}
 
       <Footer />
+      {showMakeup &&
+        <VirtualMakeUp
+          lips={product.facePart === 'lip' ? product.shades : []}
+          shadow={product.facePart === 'eye' ? product.shades : []}
+          skins={product.facePart === 'face' ? product.shades : []}
+          onClose={()=>{setShowMakeup(false)}}
+        />
+      } 
     </Fragment>
   );
 };
