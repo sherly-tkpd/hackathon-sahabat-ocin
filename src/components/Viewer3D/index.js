@@ -1,7 +1,7 @@
 import React from "react";
 import { OBJModel, DAEModel } from "react-3d-viewer";
 import freedom from "../../assets/laptop/freedom.obj";
-import alienware from "../../assets//laptop/alienware.dae";
+import alienware from "../../assets/laptop/alienware.dae";
 
 const Viewer3D = () => (
   <div style={{ display: "flex" }}>
