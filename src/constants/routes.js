@@ -1,5 +1,6 @@
 const ROUTES = {
   HOME: '/',
+  PRODUCT_WEBXR: '/products/:slug/webxr',
   PRODUCT_DETAIL: '/products/:slug',
   PRODUCT_LIST: '/products',
 };
