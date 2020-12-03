@@ -13,17 +13,17 @@ const products = [
     images: ['images/products/1/asset_1.png', 'images/products/1/asset_2.png', 'images/products/1/asset_3.png'],
   },
   {
-    id: 2, //ocin nanti ganti ya
-    slug: 'dummy',
-    title:'Dummy',
-    description: '',
-    price:10000,
+    id: 2,
+    slug: 'television',
+    title:'Samsung QLED TV',
+    description: 'Ambang Batas Kedalaman Sempurna SAMSUNG QLED TV mengoptimalkan resolusi superior untuk kedalaman gambar yang luar biasa dan kemampuan untuk menampilkan detail yang rumit dengan sempurna, menghadirkan bingkai 4K yang benar-benar hidup bagi Anda.',
+    price:21500000,
     objectModel: true,
     faceModel: false,
     facePart: '',
     shades: [],
     objectURL: '',
-    images: ['images/products/2/asset_1.jpg'],
+    images: ['images/products/2/asset_1.jpg', 'images/products/2/asset_2.jpg', 'images/products/2/asset_3.jpg'],
   },
   {
     id: 3, 
