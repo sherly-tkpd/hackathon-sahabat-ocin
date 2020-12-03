@@ -10,23 +10,23 @@ const products = [
     facePart: '',
     shades: [],
     objectURL: '',
-    images: ['src/assets/product_images/1/asset_1.png', 'src/assets/product_images/1/asset_2.png', 'src/assets/product_images/1/asset_3.png'],
+    images: ['images/products/1/asset_1.png', 'images/products/1/asset_2.png', 'images/products/1/asset_3.png'],
   },
   {
-    id: 2,
-    slug: 'xxx',
-    title:'',
+    id: 2, //ocin nanti ganti ya
+    slug: 'dummy',
+    title:'Dummy',
     description: '',
-    price:0,
+    price:10000,
     objectModel: true,
     faceModel: false,
     facePart: '',
     shades: [],
     objectURL: '',
-    images: [],
+    images: ['images/products/2/asset_1.jpg'],
   },
   {
-    id: 3,
+    id: 3, 
     slug: 'eyeshadow',
     title:'NARS Single Eyeshadow - Extreme Effects',
     description: 'Pigmented eyeshadow with vibrant colors to brighten your look. Gives a velvety non shiny color for eyes. Free of smudge and long last. Available in 3 colors. 2g.',
@@ -34,21 +34,21 @@ const products = [
     objectModel: false,
     faceModel: true,
     facePart: 'eye',
-    shades: [{
+    shades: [{ // andy ganti
         name: 'Persia',
-        rgba: ''
+        rgba: '255,0,0,0.3'
       },{
         name:'Navy', 
-        rgba:''
+        rgba:'0,255,0,0.3'
       },{
         name:'Blush', 
-        rgba:''
+        rgba:'50,0,0,0.3'
       },{
         name:'Bronze', 
-        rgba:''
+        rgba:'50,0,50,0.3'
     }],
     objectURL: '',
-    images: ['src/assets/product_images/3/asset_1_persia.jpg','src/assets/product_images/3/asset_2_navy.jpg','src/assets/product_images/3/asset_3_blush.jpg','src/assets/product_images/3/asset_4_bronze.jpg'],
+    images: ['images/products/3/asset_1_persia.jpg','images/products/3/asset_2_navy.jpg','images/products/3/asset_3_blush.jpg','images/products/3/asset_4_bronze.jpg'],
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ const products = [
     objectModel: false,
     faceModel: true,
     facePart: 'lip',
-    shades: [{
+    shades: [{ // andy ganti
         name: 'Rouge d\'Or',
         rgba: ''
       },{
@@ -70,7 +70,7 @@ const products = [
         rgba:''
       }],
     objectURL: '',
-    images: ['src/assets/product_images/4/asset_1.jpg','src/assets/product_images/4/asset_2.jpg','src/assets/product_images/4/asset_3.jpg'],
+    images: ['images/products/4/asset_1.jpg','images/products/4/asset_2.jpg','images/products/4/asset_3.jpg'],
   },
   {
     id: 5,
@@ -81,7 +81,7 @@ const products = [
     objectModel: false,
     faceModel: true,
     facePart: 'face',
-    shades: [{
+    shades: [{ // andy ganti
         name: 'Light Ivory',
         rgba: ''
       },{
@@ -89,7 +89,7 @@ const products = [
         rgba:''
       }],
     objectURL: '',
-    images: ['src/assets/product_images/5/asset_1.jpg','src/assets/product_images/5/asset_2.jpg',],
+    images: ['images/products/5/asset_1.jpeg','images/products/5/asset_2.jpeg',],
   },
 ];
 
