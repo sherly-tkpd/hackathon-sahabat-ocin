@@ -27,7 +27,7 @@ const WebXR = () => {
                     Upon entering AR, you will place product to somewhere at your place.
                 </div>
                 <div className="cssWebXRButtonWrapper">
-                    <div id="enter-ar" className="cssWebXRButton">Start augmented reality</div>
+                    <div id="enter-ar" className="cssWebXRMainButton">Start augmented reality</div>
                     <div className="cssWebXRButton" onClick={handleBack}>Back</div>
                 </div>
             </div>

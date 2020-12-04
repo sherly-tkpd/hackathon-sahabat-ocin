@@ -23,7 +23,19 @@ canvas {
 }
 
 .cssWebXRButton {
+  font-size: 16px;
   border: 1px solid black;
+  border-radius: 8px;
+  padding: 13px 0;
+  width: 180px;
+  cursor: pointer;
+  margin: 8px auto;
+}
+
+.cssWebXRMainButton {
+  font-size: 16px;
+  background-color: black;
+  color: white;
   border-radius: 8px;
   padding: 13px 0;
   width: 180px;
@@ -78,6 +90,11 @@ canvas {
 
 .cssWebXRTitle {
   margin-bottom: 5%;
+  font-size: 32px;
+}
+
+.cssWebXRDescription {
+  font-size: 16px;
 }
 
 #webxr-main.unsupported #enter-ar-info {
