@@ -23,7 +23,7 @@ const products = [
     facePart: '',
     shades: [],
     objectURL: ['/model/television/samsung_tv.obj', '/model/television/samsung_tv.mtl', 0.01, [4.712, 0]],
-    images: ['/images/products/2/asset_1.jpg', '/images/products/2/asset_2.jpg', '/images/products/2/asset_3.jpg'],
+    images: ['/images/products/2/asset_2.jpg', '/images/products/2/asset_1.jpg', '/images/products/2/asset_3.jpg'],
   },
   {
     id: 3, 
@@ -34,18 +34,22 @@ const products = [
     objectModel: false,
     faceModel: true,
     facePart: 'eye',
-    shades: [{ // andy ganti
-      name: 'Blue Shadow',
-      rgba: 'rgb(221, 84, 52, 1)',
-      trueTone: 'rgb(221, 84, 52)'
+    shades: [{
+      name: 'Blush',
+      rgba: 'rgba(240, 94, 102, 0.25)',
+      trueTone: 'rgb(240, 94, 102)',
     },{
-      name: 'Tosca Mania',
-      rgba: 'rgba(4, 140, 87, 0.9)',
-      trueTone: 'rgb(35, 204, 138)'
+      name: 'Navy',
+      rgba: 'rgba(35, 38, 71, 0.3)',
+      trueTone: 'rgb(35, 38, 71)'
     },{
-      name: 'Elegant Purple',
-      rgba: 'rgba(191, 0, 255, 0.8)',
-      trueTone: 'rgb(169, 48, 209)'
+      name: 'Forest',
+      rgba: 'rgba(34,139,34, 0.25)',
+      trueTone: 'rgb(34,139,34)'
+      },{
+        name: 'Brown',
+        rgba: 'rgb(34,24,4, 0.3)',
+        trueTone: 'rgb(34,24,4)'
       }
     ],
     objectURL: '',
@@ -60,7 +64,7 @@ const products = [
     objectModel: false,
     faceModel: true,
     facePart: 'lip',
-    shades: [{ // andy ganti
+    shades: [{
         name: 'Coral',
         rgba: 'rgba(202, 77, 47, 0.4)',
         trueTone: 'rgba(202, 77, 47, 0.8)'
@@ -104,27 +108,27 @@ const products = [
   {
     id: 6,
     slug: 'makeupset',
-    title:'MakeUp Sample',
-    description: 'Pigmented eyeshadow with vibrant colors to brighten your look. Free of smudge and long last. Available in 3 colors. 2g.',
-    price: 600000,
+    title:'NARS make up set',
+    description: 'Make up set',
+    price: 3600000,
     objectModel: false,
     faceModel: true,
     facePart: 'all',
-    shades: [{ // andy ganti
-        name: 'Blue Shadow',
-        rgba: 'rgb(221, 84, 52, 1)',
-        trueTone: 'rgb(221, 84, 52)'
+    shades: [{
+        name: 'Navy',
+        rgba: 'rgba(35, 38, 71, 0.3)',
+        trueTone: 'rgb(35, 38, 71)'
       },{
         name:'Smoothie White', 
-        rgba:'rgba(229,194,152, 0.1',
+        rgba:'rgba(229,194,152, 0.0.5)',
         trueTone: 'rgb(229,194,152)'
       },{
         name: 'Coral',
-        rgba: 'rgba(202, 77, 47, 0.4)',
+        rgba: 'rgba(202, 77, 47, 0.3)',
         trueTone: 'rgba(202, 77, 47, 0.8)'
       }],
     objectURL: '',
-    images: ['/images/products/4/asset_1.jpg','/images/products/4/asset_2.jpg','/images/products/4/asset_3.jpg'],
+    images: ['/images/products/6/asset_1.jpeg'],
   },
 ];
 
