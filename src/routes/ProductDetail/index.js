@@ -21,10 +21,14 @@ const customStyles = {
   },
 };
 const imgThumbnailStyle = {
-  maxWidth: "100%",
-  maxHeight: "100%",
+  width: "100%",
+  height: "100%",
   display: "block",
   margin: "0 auto",
+  objectFit: "cover",
+  position: 'absolute',
+  top: 0,
+  left: 0,
 };
 
 const ProductList = () => {
@@ -73,7 +77,7 @@ const ProductList = () => {
               href={imgHref}
               role="tab"
               data-toggle="tab"
-              style={{ width: "120px", height: "140px" }}
+              style={{ width: "100%", paddingTop: "100%", position: 'relative' }}
             >
               <img src={imgUrl} alt="small-image" style={imgThumbnailStyle} />
             </a>
