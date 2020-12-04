@@ -22,11 +22,11 @@ const customStyles = {
   },
 };
 const imgThumbnailStyle = {
-  maxWidth: '100%',
-  maxHeight: '100%',
-  display: 'block',
-  margin: '0 auto',
-}
+  maxWidth: "100%",
+  maxHeight: "100%",
+  display: "block",
+  margin: "0 auto",
+};
 
 const ProductList = () => {
   const { slug = "" } = useParams();
@@ -63,30 +63,42 @@ const ProductList = () => {
 
   const renderProductSmallImages = () => (
     <ul class="product__small__images" role="tablist">
-      {product.images.map((imgUrl, index)=> {
-        let imgHref = `#img-tab-${index+1}`;
+      {product.images.map((imgUrl, index) => {
+        let imgHref = `#img-tab-${index + 1}`;
         return (
           <li role="presentation" class="pot-small-img" key={index}>
-              <a href={imgHref} role="tab" data-toggle="tab" style={{width:'120px', height:'140px'}}>
-                  <img src={imgUrl} alt="small-image" style={imgThumbnailStyle}/>
-              </a>
+            <a
+              href={imgHref}
+              role="tab"
+              data-toggle="tab"
+              style={{ width: "120px", height: "140px" }}
+            >
+              <img src={imgUrl} alt="small-image" style={imgThumbnailStyle} />
+            </a>
           </li>
         );
       })}
     </ul>
-  )
+  );
 
   const renderProductBigImages = () => (
     <div class="product__big__images">
       <div class="portfolio-full-image tab-content">
-          {product.images.map((imgUrl, index) => (
-              <div role="tabpanel" class={`tab-pane fade in ${index === 0? "active": ""} product-video-position`} id={`img-tab-${index+1}`}>
-                  <img src={imgUrl} alt="full-image"/>
-                  {product.objectModel && render360ViewButton()}
-              </div>
-          ))}
+        {product.images.map((imgUrl, index) => (
+          <div
+            role="tabpanel"
+            class={`tab-pane fade in ${
+              index === 0 ? "active" : ""
+            } product-video-position`}
+            id={`img-tab-${index + 1}`}
+          >
+            <img src={imgUrl} alt="full-image" />
+            {product.objectModel && render360ViewButton()}
+          </div>
+        ))}
       </div>
-    </div> )
+    </div>
+  );
 
   // TODO: Andy -- popup for try on face functionality
   const handleTryMakeUp = () => {
@@ -95,7 +107,7 @@ const ProductList = () => {
 
   // TODO: Ocin -- popup for place object in room functionality
   const handlePlaceInRoom = () => {
-    if(product.objectURL !== ''){
+    if (product.objectURL !== "") {
       new WebXR(product.objectURL);
     }
   };
@@ -103,7 +115,6 @@ const ProductList = () => {
   return (
     <Fragment>
       <Header title="Product Details" />
-
         <section class="htc__product__details pt--120 pb--100 bg__white">
             <div class="container">
                 <div class="row">
@@ -165,15 +176,65 @@ const ProductList = () => {
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+                <ul class="pro__dtl__btn">
+                  {product.faceModel ? (
+                    <li class="buy__now__btn" onClick={handleTryMakeUp()}>
+                      <a href="#">TRY ON</a>
+                    </li>
+                  ) : (
+                    <li class="buy__now__btn" onClick={handlePlaceInRoom()}>
+                      <a href="#">PLACE IN ROOM</a>
+                    </li>
+                  )}
+                  <li>
+                    <a href="#">
+                      <span class="ti-heart"></span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="pro__social__share">
+                  <h2>Share :</h2>
+                  <ul class="pro__soaial__link">
+                    <li>
+                      <a href="#">
+                        <i class="zmdi zmdi-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="zmdi zmdi-instagram"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="zmdi zmdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="zmdi zmdi-google-plus"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
       <div id="stabilization"></div>
 
       {showModal && (
         <Modal isOpen={showModal} style={customStyles}>
-          <Viewer3D setShowModal={setShowModal} />
+          <Viewer3D
+            src={product.objectURL[0]}
+            mtl={product.objectURL[1]}
+            slug={slug}
+          />
           <button
             style={{ marginTop: 10 }}
             onClick={() => setShowModal((val) => !val)}
