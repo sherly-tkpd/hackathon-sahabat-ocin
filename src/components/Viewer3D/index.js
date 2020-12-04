@@ -1,5 +1,5 @@
 import React from "react";
-import { MTLModel } from "react-3d-viewer";
+import { MTLModel, AmbientLight } from "react-3d-viewer";
 import "./index.css";
 
 const Viewer3D = ({ src, mtl, slug }) => {
@@ -25,7 +25,9 @@ const Viewer3D = ({ src, mtl, slug }) => {
         enableZoom={false}
         position={position}
         rotation={rotation}
-      />
+      >
+        <AmbientLight color={0xffffff} />
+      </MTLModel>
     </div>
   );
 };
