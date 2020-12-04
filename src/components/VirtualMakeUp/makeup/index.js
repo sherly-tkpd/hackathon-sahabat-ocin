@@ -23,8 +23,8 @@ const canvasStyle = {
   width: 640,
   height: 480,
   filter: 'blur(4px)',
-  opacity: 0.5,
-  mixBlendMode: 'screen',
+  opacity: 1,
+  mixBlendMode: 'lighter',
   left: '50%',
   transform: 'translateX(-50%)',
 }

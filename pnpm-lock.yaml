@@ -1,13 +1,17 @@
 dependencies:
+  '@tensorflow-models/facemesh': 0.0.5
+  '@tensorflow/tfjs': 2.7.0
   '@testing-library/jest-dom': 5.11.6
   '@testing-library/react': 11.2.2_react-dom@17.0.1+react@17.0.1
   '@testing-library/user-event': 12.3.0
+  prop-types: 15.7.2
   react: 17.0.1
   react-3d-viewer: 1.0.12_react@17.0.1
   react-dom: 17.0.1_react@17.0.1
   react-modal: 3.12.1_react-dom@17.0.1+react@17.0.1
   react-router-dom: 5.2.0_react@17.0.1
   react-scripts: 4.0.1
+  react-webcam: 5.2.2_react-dom@17.0.1+react@17.0.1
   web-vitals: 0.2.4
 devDependencies:
   react-refresh: 0.9.0
@@ -1773,6 +1777,108 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-LjepnS/BSAvelnOnnzr6Gg0GcpLmnZ9ThGFK5WJtm1xOqdBE/1IACZU7MMdVzjyUkfFqGz87eRE4hFaSLiUwYg==
+  /@tensorflow-models/blazeface/0.0.5:
+    dev: false
+    peerDependencies:
+      '@tensorflow/tfjs-converter': ^1.5.2
+      '@tensorflow/tfjs-core': ^1.5.2
+    resolution:
+      integrity: sha512-bIMJDV2CD8rr7v9OrIDdDZVh9sbk0EhlZdHaDFpgWUw3Lp21wUN7GSifOJVE5hV2ngmpzM+J12OH8bG1GZoDag==
+  /@tensorflow-models/facemesh/0.0.5:
+    dependencies:
+      '@tensorflow-models/blazeface': 0.0.5
+      rimraf: 3.0.2
+    deprecated: This package has been archived in favor of @tensorflow-models/face-landmarks-detection and will no longer be updated. Please refer to @tensorflow-models/face-landmarks-detection for future updates.
+    dev: false
+    peerDependencies:
+      '@tensorflow/tfjs-converter': ^2.1.0
+      '@tensorflow/tfjs-core': ^2.1.0
+    resolution:
+      integrity: sha512-5zn3QxZfMEkUEXDQ1fqjKxK63WpwikwH/SuZpGiNkRjgronkbmCqc/UsLfAPrJjxqcyfRoO+u5fUuqhKe1wyTw==
+  /@tensorflow/tfjs-backend-cpu/2.7.0_@tensorflow+tfjs-core@2.7.0:
+    dependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+      '@types/seedrandom': 2.4.27
+      seedrandom: 2.4.3
+    dev: false
+    engines:
+      yarn: '>= 1.3.2'
+    peerDependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+    resolution:
+      integrity: sha512-R6ORcWq3ub81ABvBZEZ8Ok5OOT59B4AsRe66ds7B/NK0nN+k6y37bR3ZDVjgkEKNWNvzB7ydODikge3GNmgQIQ==
+  /@tensorflow/tfjs-backend-webgl/2.7.0_@tensorflow+tfjs-core@2.7.0:
+    dependencies:
+      '@tensorflow/tfjs-backend-cpu': 2.7.0_@tensorflow+tfjs-core@2.7.0
+      '@tensorflow/tfjs-core': 2.7.0
+      '@types/offscreencanvas': 2019.3.0
+      '@types/seedrandom': 2.4.27
+      '@types/webgl-ext': 0.0.30
+      '@types/webgl2': 0.0.5
+      seedrandom: 2.4.3
+    dev: false
+    engines:
+      yarn: '>= 1.3.2'
+    peerDependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+    resolution:
+      integrity: sha512-K7Rk5YTSWOZ969EZvh3w786daPn2ub4mA2JsX7mXKhBPUaOP9dKbBdLj9buCuMcu4zVq2pAp0QwpHSa4PHm3xg==
+  /@tensorflow/tfjs-converter/2.7.0_@tensorflow+tfjs-core@2.7.0:
+    dependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+    dev: false
+    peerDependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+    resolution:
+      integrity: sha512-SBpKYn/MkN8US7DeTcnvqHpvp/WKcwzpdgkQF+eHMHEbS1lXSlt4BHhOFgRdLPzy1gEC9+6P0VdTE8NQ737t/Q==
+  /@tensorflow/tfjs-core/2.7.0:
+    dependencies:
+      '@types/offscreencanvas': 2019.3.0
+      '@types/seedrandom': 2.4.27
+      '@types/webgl-ext': 0.0.30
+      node-fetch: 2.6.1
+      seedrandom: 2.4.3
+    dev: false
+    engines:
+      yarn: '>= 1.3.2'
+    resolution:
+      integrity: sha512-4w5zjK6C5nkLatHpzARVQNd5QKtIocJRwjZIwWcScT9z2z1dX4rVmDoUpYg1cdD4H+yRRdI0awRaI3SL34yy8Q==
+  /@tensorflow/tfjs-data/2.7.0_@tensorflow+tfjs-core@2.7.0:
+    dependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+      '@types/node-fetch': 2.5.7
+      node-fetch: 2.6.1
+    dev: false
+    peerDependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+      seedrandom: ~2.4.3
+    resolution:
+      integrity: sha512-gsVklCwqqlxhykI7U2Uy5c2hjommQCAi+3y2/LER4TNtzQTzWaGKyIXvuLuL0tE896yuzXILIMZhkUjDmUiGxA==
+  /@tensorflow/tfjs-layers/2.7.0_@tensorflow+tfjs-core@2.7.0:
+    dependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+    dev: false
+    peerDependencies:
+      '@tensorflow/tfjs-core': 2.7.0
+    resolution:
+      integrity: sha512-78zsD2LLrHQuDYv0EeV83LiF0M69lKsBfuTB3FIBgS85gapZPyHh4wooKda2Y4H9EtLogU+C6bArZuDo8PaX+g==
+  /@tensorflow/tfjs/2.7.0:
+    dependencies:
+      '@tensorflow/tfjs-backend-cpu': 2.7.0_@tensorflow+tfjs-core@2.7.0
+      '@tensorflow/tfjs-backend-webgl': 2.7.0_@tensorflow+tfjs-core@2.7.0
+      '@tensorflow/tfjs-converter': 2.7.0_@tensorflow+tfjs-core@2.7.0
+      '@tensorflow/tfjs-core': 2.7.0
+      '@tensorflow/tfjs-data': 2.7.0_@tensorflow+tfjs-core@2.7.0
+      '@tensorflow/tfjs-layers': 2.7.0_@tensorflow+tfjs-core@2.7.0
+      argparse: 1.0.10
+      chalk: 4.1.0
+      core-js: 3.8.0
+      regenerator-runtime: 0.13.7
+      yargs: 16.1.1
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-LTYK6+emFweYa3zn/o511JUR6s14/yGZpoXvFSUtdwolYHI+J50r/CyYeFpvtoTD7uwcNFQhbBAtp4L4e3Hsaw==
   /@testing-library/dom/7.28.1:
     dependencies:
       '@babel/code-frame': 7.10.4
@@ -1934,6 +2040,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
+  /@types/node-fetch/2.5.7:
+    dependencies:
+      '@types/node': 14.14.10
+      form-data: 3.0.0
+    dev: false
+    resolution:
+      integrity: sha512-o2WVNf5UhWRkxlf6eq+jMZDu7kjgpgJfl4xVNlvryc95O/6F2ld8ztKX+qu+Rjyet93WAWm5LjeX9H5FGkODvw==
   /@types/node/14.14.10:
     dev: false
     resolution:
@@ -1942,6 +2055,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
+  /@types/offscreencanvas/2019.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-esIJx9bQg+QYF0ra8GnvfianIY8qWB0GBx54PK5Eps6m+xTj86KLavHv6qDhzKcu5UUOgNfJ2pWaIIV7TRUd9Q==
   /@types/parse-json/4.0.0:
     dev: false
     resolution:
@@ -1960,6 +2077,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-auApPaJf3NPfe18hSoJkp8EbZzer2ISk7o8mCC3M9he/a04+gbMF97NkpD2S8riMGvm4BMRI59/SZQSaLTKpsQ==
+  /@types/seedrandom/2.4.27:
+    dev: false
+    resolution:
+      integrity: sha1-nbVjk33YaRX2kJK8QyWdL0hXjkE=
   /@types/source-list-map/0.1.2:
     dev: false
     resolution:
@@ -1984,6 +2105,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-7npvPKV+jINLu1SpSYVWG8KvyJBhBa8tmzMMdDoVc2pWUYHN8KIXlPJhjJ4LT97c4dXJA2SHL/q6ADbDriZN+Q==
+  /@types/webgl-ext/0.0.30:
+    dev: false
+    resolution:
+      integrity: sha512-LKVgNmBxN0BbljJrVUwkxwRYqzsAEPcZOe6S2T6ZaBDIrFp0qu4FNlpc5sM1tGbXUYFgdVQIoeLk1Y1UoblyEg==
+  /@types/webgl2/0.0.5:
+    dev: false
+    resolution:
+      integrity: sha512-oGaKsBbxQOY5+aJFV3KECDhGaXt+yZJt2y/OZsnQGLRkH6Fvr7rv4pCt3SRH1somIHfej/c4u7NSpCyd9x+1Ow==
   /@types/webpack-sources/2.0.0:
     dependencies:
       '@types/node': 14.14.10
@@ -3455,6 +3584,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-t6wbgtoCXvAzst7QgXxJYqPt0usEfbgQdftEPbLL/cvv6HPE5VgvqCuAIDR0NgU52ds6rFwqrgakNLrHEjCbrQ==
+  /cliui/7.0.4:
+    dependencies:
+      string-width: 4.2.0
+      strip-ansi: 6.0.0
+      wrap-ansi: 7.0.0
+    dev: false
+    resolution:
+      integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==
   /clone-deep/4.0.1:
     dependencies:
       is-plain-object: 2.0.4
@@ -5421,6 +5558,16 @@ packages:
       node: '>= 0.12'
     resolution:
       integrity: sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ==
+  /form-data/3.0.0:
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.27
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-CKMFDglpbMi6PyN+brwB9Q/GOw0eAnsrEZDgcsH5Krhz5Od/haKHAX0NmQfha2zPPz0JpWzA7GJHGSnvCRLWsg==
   /forwarded/0.1.2:
     dev: false
     engines:
@@ -7936,6 +8083,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ehY/mVQCf9BL0gKfsJBvFJen+1V//U+0HQMPrWct40ixE4jnv0bfvxDbWtAHL9EcaPEOJHVVYKoQn1TlZUB8Tw==
+  /node-fetch/2.6.1:
+    dev: false
+    engines:
+      node: 4.x || >=6.0.0
+    resolution:
+      integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
   /node-forge/0.10.0:
     dev: false
     engines:
@@ -9845,6 +9998,16 @@ packages:
       react: 0.13 - 17
     resolution:
       integrity: sha512-STijjW7R/cc2+6GswZzcBb73sQgtQP5IZnSIeJlKGb2I1WDyc1bl5dbHuPeklDY0OAf3opV2DUHXDYhItZe/cw==
+  /react-webcam/5.2.2_react-dom@17.0.1+react@17.0.1:
+    dependencies:
+      react: 17.0.1
+      react-dom: 17.0.1_react@17.0.1
+    dev: false
+    peerDependencies:
+      react: '>=15.3.0'
+      react-dom: '>=15.3.0'
+    resolution:
+      integrity: sha512-hy/uQlqQMKtjFdPN9i6r8OTU3axTuGIMg1zgrnHjKHvPfepxskBPW8GhIrNMQxtG70ADfQ3W/a/VhvpeFXrFtA==
   /react/17.0.1:
     dependencies:
       loose-envify: 1.4.0
@@ -10432,6 +10595,10 @@ packages:
       node: '>= 10.13.0'
     resolution:
       integrity: sha512-6D82/xSzO094ajanoOSbe4YvXWMfn2A//8Y1+MUqFAJul5Bs+yn36xbK9OtNDcRVSBJ9jjeoXftM6CfztsjOAA==
+  /seedrandom/2.4.3:
+    dev: false
+    resolution:
+      integrity: sha1-JDhQTa0zkXMUv/GKxNeU8W1qrsw=
   /select-hose/2.0.0:
     dev: false
     resolution:
@@ -12249,6 +12416,16 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==
+  /wrap-ansi/7.0.0:
+    dependencies:
+      ansi-styles: 4.3.0
+      string-width: 4.2.0
+      strip-ansi: 6.0.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
   /wrappy/1.0.2:
     dev: false
     resolution:
@@ -12308,6 +12485,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-wNcy4NvjMYL8gogWWYAO7ZFWFfHcbdbE57tZO8e4cbpj8tfUcwrwqSl3ad8HxpYWCdXcJUCeKKZS62Av1affwQ==
+  /y18n/5.0.5:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-hsRUr4FFrvhhRH12wOdfs38Gy7k2FFzB9qgN9v3aLykRq0dRcdcpz5C9FxdS2NuhOrI/628b/KSTJ3rwHysYSg==
   /yallist/3.1.1:
     dev: false
     resolution:
@@ -12338,6 +12521,12 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==
+  /yargs-parser/20.2.4:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
   /yargs/13.3.2:
     dependencies:
       cliui: 5.0.0
@@ -12371,6 +12560,20 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
+  /yargs/16.1.1:
+    dependencies:
+      cliui: 7.0.4
+      escalade: 3.1.1
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      string-width: 4.2.0
+      y18n: 5.0.5
+      yargs-parser: 20.2.4
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-hAD1RcFP/wfgfxgMVswPE+z3tlPFtxG8/yWUrG2i17sTWGCGqWnxKcLTF4cUKDUK8fzokwsmO9H0TDkRbMHy8w==
   /yocto-queue/0.1.0:
     dev: false
     engines:
@@ -12378,9 +12581,12 @@ packages:
     resolution:
       integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 specifiers:
+  '@tensorflow-models/facemesh': 0.0.5
+  '@tensorflow/tfjs': ^2.7.0
   '@testing-library/jest-dom': ^5.11.4
   '@testing-library/react': ^11.1.0
   '@testing-library/user-event': ^12.1.10
+  prop-types: 15.7.2
   react: ^17.0.1
   react-3d-viewer: ^1.0.12
   react-dom: ^17.0.1
@@ -12388,4 +12594,5 @@ specifiers:
   react-refresh: ^0.9.0
   react-router-dom: ^5.2.0
   react-scripts: 4.0.1
+  react-webcam: ^5.2.2
   web-vitals: ^0.2.4
