@@ -181,11 +181,11 @@ const ProductList = () => {
                 </div>
                 <ul class="pro__dtl__btn">
                   {product.faceModel ? (
-                    <li class="buy__now__btn" onClick={handleTryMakeUp()}>
+                    <li class="buy__now__btn" onClick={handleTryMakeUp}>
                       <a href="#">TRY ON</a>
                     </li>
                   ) : (
-                    <li class="buy__now__btn" onClick={handlePlaceInRoom()}>
+                    <li class="buy__now__btn" onClick={handlePlaceInRoom}>
                       <a href="#">PLACE IN ROOM</a>
                     </li>
                   )}
