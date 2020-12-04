@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tensorflow-models/facemesh": "0.0.5",
+    "@tensorflow/tfjs": "^2.7.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -12,7 +14,9 @@
     "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "web-vitals": "^0.2.4"
+    "react-webcam": "^5.2.2",
+    "web-vitals": "^0.2.4",
+    "prop-types": "15.7.2"
   },
   "scripts": {
     "start": "react-scripts start",

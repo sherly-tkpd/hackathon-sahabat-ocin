@@ -35,18 +35,19 @@ const products = [
     faceModel: true,
     facePart: 'eye',
     shades: [{ // andy ganti
-        name: 'Persia',
-        rgba: '255,0,0,0.3'
-      },{
-        name:'Navy', 
-        rgba:'0,255,0,0.3'
-      },{
-        name:'Blush', 
-        rgba:'50,0,0,0.3'
-      },{
-        name:'Bronze', 
-        rgba:'50,0,50,0.3'
-    }],
+      name: 'Blue Shadow',
+      rgba: 'rgb(221, 84, 52, 1)',
+      trueTone: 'rgb(221, 84, 52)'
+    },{
+      name: 'Tosca Mania',
+      rgba: 'rgba(4, 140, 87, 0.9)',
+      trueTone: 'rgb(35, 204, 138)'
+    },{
+      name: 'Elegant Purple',
+      rgba: 'rgba(191, 0, 255, 0.8)',
+      trueTone: 'rgb(169, 48, 209)'
+      }
+    ],
     objectURL: '',
     images: ['/images/products/3/asset_1_persia.jpg','/images/products/3/asset_2_navy.jpg','/images/products/3/asset_3_blush.jpg','/images/products/3/asset_4_bronze.jpg'],
   },
@@ -60,14 +61,21 @@ const products = [
     faceModel: true,
     facePart: 'lip',
     shades: [{ // andy ganti
-        name: 'Rouge d\'Or',
-        rgba: ''
+        name: 'Coral',
+        rgba: 'rgba(202, 77, 47, 0.4)',
+        trueTone: 'rgba(202, 77, 47, 0.8)'
+      },{
+        name:'Rouge d\'Or', 
+        rgba:'rgba(205, 50, 50, 0.4)',
+        trueTone: 'rgba(205, 50, 50, 0.8)'
       },{
         name:'Cuivre', 
-        rgba:''
+        rgba:'rgba(168, 0, 0, 0.4)',
+        trueTone: 'rgb(212, 49, 49, 0.8)'
       },{
-        name:'Or Beige', 
-        rgba:''
+        name:'Rose', 
+        rgba:'rgba(255,20,147, 0.2)',
+        trueTone: 'rgb(255,20,147, 0.6)'
       }],
     objectURL: '',
     images: ['/images/products/4/asset_1.jpg','/images/products/4/asset_2.jpg','/images/products/4/asset_3.jpg'],
@@ -81,12 +89,14 @@ const products = [
     objectModel: false,
     faceModel: true,
     facePart: 'face',
-    shades: [{ // andy ganti
-        name: 'Light Ivory',
-        rgba: ''
+    shades: [{
+        name: 'Smoothie White',
+        rgba: 'rgba(229,194,152, 0.07)',
+        trueTone: 'rgb(229,194,152)'
       },{
-        name:'Nordstorm', 
-        rgba:''
+        name: 'Warm Beauty',
+        rgba: 'rgba(204,132,67, 0.07)',
+        trueTone: 'rgb(204,132,67)'
       }],
     objectURL: '',
     images: ['/images/products/5/asset_1.jpeg','/images/products/5/asset_2.jpeg'],
