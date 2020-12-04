@@ -1,25 +1,17 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import loadable from '@loadable/component';
 
 import ROUTES from "../../constants/routes";
 import products from "../../constants/products";
 
-import Modal from "react-modal";
-import Viewer3D from "../../components/Viewer3D";
-import VirtualMakeUp from "../../components/VirtualMakeUp";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Modal from '../../components/Modal';
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+const Viewer3D = loadable(() => import(/* webpackChunkName: "product-viewer-3d" */ '../../components/Viewer3D'));
+const VirtualMakeUp = loadable(() => import(/* webpackChunkName: "product-virtual-makeup" */ '../../components/VirtualMakeUp'));
+
 const imgThumbnailStyle = {
   maxWidth: "100%",
   maxHeight: "100%",
@@ -250,18 +242,12 @@ const ProductList = () => {
       <div id="stabilization"></div>
 
       {showModal && (
-        <Modal isOpen={showModal} style={customStyles}>
+        <Modal onClose={() => setShowModal((val) => !val)} title={`${product.title} 360 View`}>
           <Viewer3D
             src={product.objectURL[0]}
             mtl={product.objectURL[1]}
             slug={slug}
           />
-          <button
-            style={{ marginTop: 10 }}
-            onClick={() => setShowModal((val) => !val)}
-          >
-            Close Modal
-          </button>
         </Modal>
       )}
 
