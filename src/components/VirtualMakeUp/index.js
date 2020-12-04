@@ -23,6 +23,67 @@ const VirtualMakeUp = ({ onClose, lips = [], shadow = [], skins = [] }) => {
   const renderSkin = [ emptyShade, ...skins ];
   const renderShadow = [ emptyShade, ...shadow ];
 
+  const renderControl = () => {
+    const isSkin = Boolean(skins.length);
+    const isShadow = Boolean(shadow.length);
+    const isLips = Boolean(lips.length);
+    const isAll = isSkin && isShadow && isLips;
+
+    if(isAll){
+      return renderSkin.map((each, index) => {
+        const active = {...index === activeSkin && {border: '4px solid #555'}}
+        return (
+          <div key={index}>
+            <button
+              type="button"
+              style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}}
+              onClick={()=>{
+                setActiveSkin(index);
+                setActiveLip(index);
+                setActiveEyeShadow(index);
+              }}
+            >
+              {index === 0 ? 'Clear' : 'Apply Set'}
+            </button>
+          </div>
+        )
+      });
+    }
+
+    if(isSkin){
+      return renderSkin.map((each, index) => {
+        const active = {...index === activeSkin && {border: '4px solid #555'}}
+        return (
+          <div key={index}>
+            <button type="button" style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}} onClick={()=>{setActiveSkin(index)}}>{each.name}</button>
+          </div>
+        )
+      });
+    }
+
+    if(isShadow){
+      return renderShadow.map((each, index) => {
+        const active = {...index === activeEyeShadow && {border: '4px solid #555'}}
+        return (
+          <div key={index}>
+            <button type="button" style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}} onClick={()=>{setActiveEyeShadow(index)}}>{each.name}</button>
+          </div>
+        )
+      });
+    }
+
+    if(isLips){
+      return isLips && renderLips.map((each, index) => {
+        const active = {...index === activeLip && {border: '4px solid #555'}}
+        return (
+          <div key={index}>
+            <button type="button" style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}} onClick={()=>{setActiveLip(index)}}>{each.name}</button>
+          </div>
+        )
+      });
+    }
+  }
+
   return (
     <Portal>
       <div style={modalOverlay}>
@@ -35,32 +96,9 @@ const VirtualMakeUp = ({ onClose, lips = [], shadow = [], skins = [] }) => {
           </div>
           <Makeup skin={renderSkin?.[activeSkin]?.rgba} lip={renderLips?.[activeLip]?.rgba} eyeShadow={renderShadow?.[activeEyeShadow]?.rgba} />
 
-          <div style={{overflowX: 'auto'}}>
+          <div style={{overflowX: 'auto', position: 'absolute', bottom: 0, left: 0, right: 0}}>
             <div style={{display: 'flex'}}>
-              { Boolean(skins.length) && renderSkin.map((each, index) => {
-                const active = {...index === activeSkin && {border: '3px solid #555'}}
-                return (
-                  <div key={index}>
-                    <button type="button" style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}} onClick={()=>{setActiveSkin(index)}}>{each.name}</button>
-                  </div>
-                )
-              })}
-              { Boolean(shadow.length) && renderShadow.map((each, index) => {
-                const active = {...index === activeEyeShadow && {border: '3px solid #555'}}
-                return (
-                  <div key={index}>
-                    <button type="button" style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}} onClick={()=>{setActiveEyeShadow(index)}}>{each.name}</button>
-                  </div>
-                )
-              })}
-              { Boolean(lips.length) && renderLips.map((each, index) => {
-                const active = {...index === activeLip && {border: '3px solid #555'}}
-                return (
-                  <div key={index}>
-                    <button type="button" style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}} onClick={()=>{setActiveLip(index)}}>{each.name}</button>
-                  </div>
-                )
-              })}
+              {renderControl()}
             </div>
           </div>
         </div>
