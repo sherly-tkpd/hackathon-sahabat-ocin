@@ -69,7 +69,7 @@ const products = [
         rgba: 'rgba(202, 77, 47, 0.4)',
         trueTone: 'rgba(202, 77, 47, 0.8)'
       },{
-        name:'Rouge d\'Or', 
+        name:"Rouge d\'Or", 
         rgba:'rgba(205, 50, 50, 0.4)',
         trueTone: 'rgba(205, 50, 50, 0.8)'
       },{
@@ -120,7 +120,7 @@ const products = [
         trueTone: 'rgb(35, 38, 71)'
       },{
         name:'Smoothie White', 
-        rgba:'rgba(229,194,152, 0.0.5)',
+        rgba:'rgba(229,194,152, 0.05)',
         trueTone: 'rgb(229,194,152)'
       },{
         name: 'Coral',

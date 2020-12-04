@@ -15,9 +15,25 @@ const emptyShade = {
 }
 
 const VirtualMakeUp = ({ onClose, lips = [], shadow = [], skins = [] }) => {
-  const [activeSkin, setActiveSkin] = useState(0);
-  const [activeLip, setActiveLip] = useState(0);
-  const [activeEyeShadow, setActiveEyeShadow] = useState(0);
+  const [activeState, setActiveState] = useState({
+    activeSkin: 0,
+    activeLip: 0,
+    activeEyeShadow: 0,
+  });
+
+  const { activeSkin, activeLip, activeEyeShadow } = activeState;
+
+  const setActiveSkin = val => {
+    setActiveState({...activeState, activeSkin: val});
+  }
+
+  const setActiveEyeShadow = val => {
+    setActiveState({...activeState, activeEyeShadow: val});
+  }
+
+  const setActiveLip = val => {
+    setActiveState({...activeState, activeLip: val});
+  }
 
   const renderLips = [ emptyShade, ...lips ];
   const renderSkin = [ emptyShade, ...skins ];
@@ -38,9 +54,11 @@ const VirtualMakeUp = ({ onClose, lips = [], shadow = [], skins = [] }) => {
               type="button"
               style={{...shadePicker, backgroundColor: each.trueTone, ...each?.style, ...active}}
               onClick={()=>{
-                setActiveSkin(index);
-                setActiveLip(index);
-                setActiveEyeShadow(index);
+                setActiveState({
+                  activeSkin: index,
+                  activeLip: index,
+                  activeEyeShadow: index,
+                })
               }}
             >
               {index === 0 ? 'Clear' : 'Apply Set'}
