@@ -36,8 +36,8 @@ const products = [
     facePart: 'eye',
     shades: [{ // andy ganti
       name: 'Blue Shadow',
-      rgba: 'rgba(0,0,225, 0.7)',
-      trueTone: 'rgb(79, 59, 227)'
+      rgba: 'rgb(221, 84, 52, 1)',
+      trueTone: 'rgb(221, 84, 52)'
     },{
       name: 'Tosca Mania',
       rgba: 'rgba(4, 140, 87, 0.9)',
@@ -61,21 +61,21 @@ const products = [
     faceModel: true,
     facePart: 'lip',
     shades: [{ // andy ganti
-        name: 'Sparkling Silver',
-        rgba: 'rgba(145, 145, 145, 0.8',
-        trueTone: 'rgb(145, 145, 145)'
+        name: 'Coral',
+        rgba: 'rgba(202, 77, 47, 0.4)',
+        trueTone: 'rgba(202, 77, 47, 0.8)'
       },{
-        name:'Pinky pink', 
-        rgba:'rgba(255, 0, 212, 0.4',
-        trueTone: 'rgb(237, 126, 220)'
+        name:'Rouge d\'Or', 
+        rgba:'rgba(205, 50, 50, 0.4)',
+        trueTone: 'rgba(205, 50, 50, 0.8)'
       },{
-        name:'Red Fire', 
-        rgba:'rgba(168, 0, 0, 0.8)',
-        trueTone: 'rgb(212, 49, 49)'
+        name:'Cuivre', 
+        rgba:'rgba(168, 0, 0, 0.4)',
+        trueTone: 'rgb(212, 49, 49, 0.8)'
       },{
-        name:'Blue Shappire', 
-        rgba:'rgba(0,0,225, 0.8)',
-        trueTone: 'rgb(79, 59, 227)'
+        name:'Rose', 
+        rgba:'rgba(255,20,147, 0.2)',
+        trueTone: 'rgb(255,20,147, 0.6)'
       }],
     objectURL: '',
     images: ['/images/products/4/asset_1.jpg','/images/products/4/asset_2.jpg','/images/products/4/asset_3.jpg'],
@@ -91,12 +91,12 @@ const products = [
     facePart: 'face',
     shades: [{
         name: 'Smoothie White',
-        rgba: 'rgba(229,194,152, 0.3)',
+        rgba: 'rgba(229,194,152, 0.07)',
         trueTone: 'rgb(229,194,152)'
       },{
         name: 'Warm Beauty',
-        rgba: 'rgba(204,132,67, 0.3)',
-        trueTone: 'rgb(229,194,152)'
+        rgba: 'rgba(204,132,67, 0.07)',
+        trueTone: 'rgb(204,132,67)'
       }],
     objectURL: '',
     images: ['/images/products/5/asset_1.jpeg','/images/products/5/asset_2.jpeg'],
