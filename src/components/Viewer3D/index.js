@@ -1,6 +1,5 @@
 import React from "react";
 import { MTLModel } from "react-3d-viewer";
-import alienware from "../../assets/laptop/alienware.dae";
 import "./index.css";
 
 const Viewer3D = ({ src, mtl, slug }) => {
