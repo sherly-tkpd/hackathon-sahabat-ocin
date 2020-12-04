@@ -8,7 +8,6 @@ import products from "../../constants/products";
 
 import Modal from "react-modal";
 import Viewer3D from "../../components/Viewer3D";
-import WebXR from "./components/WebXR";
 import VirtualMakeUp from "../../components/VirtualMakeUp";
 
 const customStyles = {
