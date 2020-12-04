@@ -8,7 +8,6 @@ import products from "../../constants/products";
 
 import Modal from "react-modal";
 import Viewer3D from "../../components/Viewer3D";
-import WebXR from "./components/WebXR";
 import VirtualMakeUp from "../../components/VirtualMakeUp";
 
 const customStyles = {
@@ -108,13 +107,6 @@ const ProductList = () => {
     setShowMakeup(true);
   };
 
-  // TODO: Ocin -- popup for place object in room functionality
-  const handlePlaceInRoom = () => {
-    if (product.objectURL !== "") {
-      new WebXR(product.objectURL);
-    }
-  };
-
   return (
     <Fragment>
       <Header title="Product Details" />
@@ -185,8 +177,8 @@ const ProductList = () => {
                       <a href="#">TRY ON</a>
                     </li>
                   ) : (
-                    <li class="buy__now__btn" onClick={handlePlaceInRoom}>
-                      <a href="#">PLACE IN ROOM</a>
+                    <li class="buy__now__btn">
+                      <a href={`/products/${slug}/webxr`}>PLACE IN ROOM</a>
                     </li>
                   )}
                   <li>

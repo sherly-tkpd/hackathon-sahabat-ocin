@@ -5,6 +5,7 @@ let MODEL_OBJ_URL;
 let MODEL_MTL_URL;
 let MODEL_SCALE;
 let custom;
+let mainElement;
 
 /**
  * Container class to manage connecting to the WebXR Device API
@@ -15,6 +16,7 @@ class WebXR {
     this.onXRFrame = this.onXRFrame.bind(this);
     this.onEnterAR = this.onEnterAR.bind(this);
     this.onClick = this.onClick.bind(this);
+    mainElement = document.getElementById('webxr-main');
 
     MODEL_OBJ_URL = args[0];
     MODEL_MTL_URL = args[1];
@@ -31,6 +33,7 @@ class WebXR {
     // The entry point of the WebXR Device API is on `navigator.xr`.
     // We also want to ensure that `XRSession` has `requestHitTest`,
     // indicating that the #webxr-hit-test flag is enabled.
+
     if (navigator.xr && window.XRSession.prototype.requestHitTest) {
       try {
         this.device = await navigator.xr.requestDevice();
@@ -46,12 +49,14 @@ class WebXR {
       // If `navigator.xr` or `XRSession.prototype.requestHitTest`
       // does not exist, we must display a message indicating there
       // are no valid devices.
+      this.onNoXRDevice();
+      return;
     }
 
     // We found an XRDevice! Bind a click listener on our "Enter AR" button
     // since the spec requires calling `device.requestSession()` within a
     // user gesture.
-    this.onEnterAR();
+    document.querySelector('#enter-ar').addEventListener('click', this.onEnterAR);
   }
 
   /**
@@ -77,12 +82,21 @@ class WebXR {
 
       // If `requestSession` is successful, add the canvas to the
       // DOM since we know it will now be used.
-      document.body.appendChild(outputCanvas);
+      mainElement.appendChild(outputCanvas);
       this.onSessionStarted(session)
     } catch (e) {
       // If `requestSession` fails, the canvas is not added, and we
       // call our function for unsupported browsers.
+      this.onNoXRDevice();
     }
+  }
+  
+  /**
+   * Toggle on a class on the page to disable the "Enter AR"
+   * button and display the unsupported browser message.
+   */
+  onNoXRDevice() {
+    mainElement.classList.add('unsupported');
   }
 
   /**
@@ -94,7 +108,7 @@ class WebXR {
     this.session = session;
 
     // Add the `ar` class to our body, which will hide our 2D components
-    document.body.classList.add('ar');
+    mainElement.classList.add('ar');
 
     // To help with working with 3D on the web, we'll use three.js. Set up
     // the WebGLRenderer, which handles rendering to our session's base layer.
@@ -165,7 +179,7 @@ class WebXR {
     // not yet marked our app as stabilized, do so
     if (this.reticle.visible && !this.stabilized) {
       this.stabilized = true;
-      document.body.classList.add('stabilized');
+      mainElement.classList.add('stabilized');
     }
 
     // Queue up the next frame
