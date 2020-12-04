@@ -107,6 +107,36 @@ const ProductList = () => {
     setShowMakeup(true);
   };
 
+  const renderVirtualMakeup = () => {
+    const facePart = product.facePart;
+    let lips = [];
+    let shadow = [];
+    let skins = [];
+
+    if(facePart === 'lip'){
+      lips = product.shades;
+    } else if(facePart === 'eye'){
+      shadow = product.shades;
+    } else if(facePart === 'face'){
+      skins = product.shades;
+    } else if(facePart === 'all'){
+      shadow = [product.shades[0]];
+      skins = [product.shades[1]];
+      lips = [product.shades[2]];
+    }
+
+    return (
+      <VirtualMakeUp
+        lips={lips}
+        shadow={shadow}
+        skins={skins}
+        onClose={() => {
+          setShowMakeup(false);
+        }}
+      />
+    )
+  }
+
   return (
     <Fragment>
       <Header title="Product Details" />
@@ -236,16 +266,7 @@ const ProductList = () => {
       )}
 
       <Footer />
-      {showMakeup && (
-        <VirtualMakeUp
-          lips={product.facePart === "lip" ? product.shades : []}
-          shadow={product.facePart === "eye" ? product.shades : []}
-          skins={product.facePart === "face" ? product.shades : []}
-          onClose={() => {
-            setShowMakeup(false);
-          }}
-        />
-      )}
+      {showMakeup && renderVirtualMakeup()}
     </Fragment>
   );
 };

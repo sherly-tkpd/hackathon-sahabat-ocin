@@ -101,6 +101,31 @@ const products = [
     objectURL: '',
     images: ['/images/products/5/asset_1.jpeg','/images/products/5/asset_2.jpeg'],
   },
+  {
+    id: 6,
+    slug: 'makeupset',
+    title:'MakeUp Sample',
+    description: 'Pigmented eyeshadow with vibrant colors to brighten your look. Free of smudge and long last. Available in 3 colors. 2g.',
+    price: 600000,
+    objectModel: false,
+    faceModel: true,
+    facePart: 'all',
+    shades: [{ // andy ganti
+        name: 'Blue Shadow',
+        rgba: 'rgb(221, 84, 52, 1)',
+        trueTone: 'rgb(221, 84, 52)'
+      },{
+        name:'Smoothie White', 
+        rgba:'rgba(229,194,152, 0.1',
+        trueTone: 'rgb(229,194,152)'
+      },{
+        name: 'Coral',
+        rgba: 'rgba(202, 77, 47, 0.4)',
+        trueTone: 'rgba(202, 77, 47, 0.8)'
+      }],
+    objectURL: '',
+    images: ['/images/products/4/asset_1.jpg','/images/products/4/asset_2.jpg','/images/products/4/asset_3.jpg'],
+  },
 ];
 
 export default products;
