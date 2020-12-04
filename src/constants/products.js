@@ -9,7 +9,7 @@ const products = [
     faceModel: false,
     facePart: '',
     shades: [],
-    objectURL: '',
+    objectURL: ['/model/vase/indoor_plant.obj', '/model/vase/indoor_plant.mtl', 0.1, [0, 0]],
     images: ['/images/products/1/asset_1.png', '/images/products/1/asset_2.png', '/images/products/1/asset_3.png'],
   },
   {
@@ -22,8 +22,8 @@ const products = [
     faceModel: false,
     facePart: '',
     shades: [],
-    objectURL: '',
-    images: ['images/products/2/asset_1.jpg', 'images/products/2/asset_2.jpg', 'images/products/2/asset_3.jpg'],
+    objectURL: ['/model/television/samsung_tv.obj', '/model/television/samsung_tv.mtl', 0.01, [4.712, 0]],
+    images: ['/images/products/2/asset_1.jpg', '/images/products/2/asset_2.jpg', '/images/products/2/asset_3.jpg'],
   },
   {
     id: 3, 

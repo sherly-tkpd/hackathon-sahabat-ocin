@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -8,6 +8,7 @@ import products from "../../constants/products";
 
 import Modal from "react-modal";
 import Viewer3D from "../../components/Viewer3D";
+import WebXR from './components/WebXR';
 
 const customStyles = {
   content: {
@@ -89,7 +90,11 @@ const ProductList = () => {
   const handleTryMakeUp = () => {};
 
   // TODO: Ocin -- popup for place object in room functionality
-  const handlePlaceInRoom = () => {};
+  const handlePlaceInRoom = () => {
+    if(product.objectURL !== ''){
+      new WebXR(product.objectURL);
+    }
+  };
 
   return (
     <Fragment>
@@ -160,6 +165,7 @@ const ProductList = () => {
                 </div>
             </div>
         </section>
+      <div id="stabilization"></div>
 
       {showModal && (
         <Modal isOpen={showModal} style={customStyles}>
